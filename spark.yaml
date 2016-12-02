@@ -1,0 +1,6 @@
+init_config:
+
+instances:
+  - spark_url: http://localhost:18080
+    spark_cluster_mode: spark_standalone_mode
+    cluster_name: MySparkCluster

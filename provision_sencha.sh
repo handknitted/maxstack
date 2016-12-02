@@ -15,3 +15,6 @@ curl https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog
 sudo chmod +x install_agent.sh
 sudo DD_API_KEY=${DD_API_KEY} ./install_agent.sh
 
+sudo mv spark.yaml /etc/dd-agent/conf.d/.
+
+sudo service dd-agent restart

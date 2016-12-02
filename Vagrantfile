@@ -76,6 +76,8 @@ Vagrant.configure(2) do |config|
   #  install dependencies for our process
   config.vm.provision "shell", path: "install.sh"
   # provision the environments
+  config.vm.provision "file", source: "spark.yaml", \
+    destination: "spark.yaml"
   if ENV['DD_API_KEY']
     config.vm.provision "shell", path: "provision_sencha.sh", privileged: false, env: {"DD_API_KEY" => "#{ENV['DD_API_KEY']}"}
   end
