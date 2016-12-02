@@ -76,7 +76,9 @@ Vagrant.configure(2) do |config|
   #  install dependencies for our process
   config.vm.provision "shell", path: "install.sh"
   # provision the environments
-  config.vm.provision "shell", path: "provision_sencha.sh", privileged: false
+  if ENV['DD_API_KEY']
+    config.vm.provision "shell", path: "provision_sencha.sh", privileged: false, env: {"DD_API_KEY" => "#{ENV['DD_API_KEY']}"}
+  end
 
   # pg-tips will now have devstack cloned so push our local.conf file into place
   config.vm.provision "file", source: "local.conf", \
